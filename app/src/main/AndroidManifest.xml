@@ -10,8 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubUsers">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".UserDetailsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".UsersListActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
