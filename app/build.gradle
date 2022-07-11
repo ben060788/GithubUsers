@@ -17,6 +17,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "SERVER_URL", '"https://api.github.com/"'
+            buildConfigField "String", "ACCESS_TOKEN", '"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"'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
