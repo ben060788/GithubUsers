@@ -1,5 +1,6 @@
 package com.example.githubusers
 
+import com.example.githubusers.models.ErrorResponseModel
 import com.example.githubusers.models.UsersModel
 
 class UsersListPresenter(
@@ -19,6 +20,11 @@ class UsersListPresenter(
             mainView!!.setUsersList(usersList)
             mainView!!.hideProgress()
         }
+    }
+
+    override fun onErrorRequest(errorBody: ErrorResponseModel) {
+        mainView!!.hideProgress()
+        mainView!!.showToast(errorBody.message)
     }
 
     override fun onLoadNextPage(id: Int) {

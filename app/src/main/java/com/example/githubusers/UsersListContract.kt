@@ -1,5 +1,6 @@
 package com.example.githubusers
 
+import com.example.githubusers.models.ErrorResponseModel
 import com.example.githubusers.models.UsersModel
 
 interface UsersListContract {
@@ -7,6 +8,8 @@ interface UsersListContract {
         fun showProgress()
 
         fun hideProgress()
+
+        fun showToast(msg: String)
 
         fun setUsersList(usersList: List<UsersModel>)
 
@@ -16,6 +19,8 @@ interface UsersListContract {
     interface Model {
         interface OnFinishedListener {
             fun onFinished(usersList: List<UsersModel>)
+
+            fun onErrorRequest(errorBody: ErrorResponseModel)
         }
 
         fun getUsersList(onFinishedListener: OnFinishedListener?)

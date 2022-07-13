@@ -8,6 +8,7 @@ import retrofit2.Response
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import com.google.gson.Gson
 
 class UsersListResponseModel() : UsersListContract.Model {
     val myAPIService = RetrofitManager().getInstance()
@@ -24,7 +25,13 @@ class UsersListResponseModel() : UsersListContract.Model {
                     if (response.isSuccessful) {
                         Handler(Looper.getMainLooper()).postDelayed({
                             onFinishedListener!!.onFinished(response.body())
-                        }, 1000)
+                        }, 500)
+                    } else {
+                        onFinishedListener!!.onErrorRequest(
+                            Gson().fromJson(
+                                response.errorBody().string(), ErrorResponseModel::class.java
+                            )
+                        )
                     }
                 }
             }
@@ -52,6 +59,12 @@ class UsersListResponseModel() : UsersListContract.Model {
                         Handler(Looper.getMainLooper()).postDelayed({
                             onFinishedListener!!.onFinished(response.body())
                         }, 1000)
+                    } else {
+                        onFinishedListener!!.onErrorRequest(
+                            Gson().fromJson(
+                                response.errorBody().string(), ErrorResponseModel::class.java
+                            )
+                        )
                     }
                 }
             }

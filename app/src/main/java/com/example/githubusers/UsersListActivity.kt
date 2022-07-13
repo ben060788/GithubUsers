@@ -55,6 +55,10 @@ class UsersListActivity : AppCompatActivity(), UsersListContract.View {
         binding.indexRecyclerView.visibility = View.VISIBLE
     }
 
+    override fun showToast(msg: String) {
+        Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
+    }
+
     override fun readNextPage(id: Int) {
         presenter!!.onLoadNextPage(id)
     }
