@@ -13,5 +13,5 @@ interface MyAPIService {
     ): Call<List<UsersModel>>
 
     @GET("users/{login}")
-    fun getUserDetail(@Path("login") loginName: String): Call<UserDetailsModel>
+    fun getUserDetails(@Path("login") loginName: String): Call<UserDetailsModel>
 }

@@ -1,6 +1,7 @@
 package com.example.githubusers
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -43,6 +44,12 @@ class UsersListActivity : AppCompatActivity(), UsersListContract.View {
                 }
             }
         })
+
+        adapter.onItemClicked = { it ->
+            val intent = Intent(context, UserDetailsActivity::class.java)
+            intent.putExtra("login", it.login)
+            startActivity(intent)
+        }
     }
 
     override fun showProgress() {
